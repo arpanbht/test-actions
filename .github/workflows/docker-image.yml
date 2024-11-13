@@ -39,4 +39,4 @@ jobs:
 
       # Step 5: Optional - Verify the image
       - name: Docker image info
-        run: docker images ${{ secrets.DOCKER_USERNAME }}/your-image-name:latest
+        run: docker images ${{ secrets.DOCKER_USERNAME }}/node-test:latest
