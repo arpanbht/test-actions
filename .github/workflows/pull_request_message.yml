@@ -1,0 +1,25 @@
+name: Greet users on pull request creation
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet the user
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prUser = context.payload.pull_request.user.login;
+            const prNumber = context.payload.pull_request.number;
+            const repo = context.repo.repo;
+            const owner = context.repo.owner;
+
+            github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: prNumber,
+              body: `👋 Hi @${prUser}, thank you for opening this pull request! Our team will review it soon.`
+            });
