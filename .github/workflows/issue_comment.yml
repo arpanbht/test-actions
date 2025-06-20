@@ -33,7 +33,7 @@ jobs:
       - name: create comment with api
         run: |
           gh api -X POST \
-            http://api.github.com/repo/${ORGANIZATION}/${REPOSITORY}/issues/${{ github.event.issue.number }}/comments \
+            http://api.github.com/repos/${ORGANIZATION}/${REPOSITORY}/issues/${{ github.event.issue.number }}/comments \
             -f body="This is a comment created with the GitHub CLI"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
