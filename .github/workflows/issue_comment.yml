@@ -34,8 +34,8 @@ jobs:
         run: |
           gh api -X POST \
             http://api.github.com/repos/${ORGANIZATION}/${REPOSITORY}/issues/${{ github.event.issue.number }}/comments \
-            -f body="This is a comment created with the GitHub CLI"
+            -f body='This is a comment created with the GitHub CLI'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ORGANIZATION: ${{ github.repository_owner }}
+          ORGANIZATION: ${{ github.event.repository.owner.login }}
           REPOSITORY: ${{ github.event.repository.name }}
